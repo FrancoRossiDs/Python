@@ -1,0 +1,1 @@
+En esta clase aparte de una introducción hicimos un diagrama de fluyo simple para ver la lógica detrás de un algoritmo que busca el mayor de tres números
