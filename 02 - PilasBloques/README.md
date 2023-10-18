@@ -1,0 +1,1 @@
+En esta clase aparte de una introducción hicimos unos ejercicios de lógica usando PilasBloques
