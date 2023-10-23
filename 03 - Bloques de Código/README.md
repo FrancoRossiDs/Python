@@ -1,0 +1,1 @@
+En esta clase vimos Variables y Tipos de datos con su actividad y un poco de sus distintas aplicaciones
