@@ -1,0 +1,1 @@
+En esta clase vimos bucles y listas a profundidad màs sus respectivas actividades
