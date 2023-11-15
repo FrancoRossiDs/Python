@@ -11,6 +11,14 @@ nombre_1 = ""
 nombre_2 = ""
 c=0
 
+def MostrarTableroConNumeros():
+    # Tablero con números
+    print("Tablero con números:")
+    for i in range(1, 10, 3):
+        print(f"{i} | {i + 1} | {i + 2}")
+    print("")
+
+
 def ActualizarLista():
     global lista_lugares
     lista_lugares = [str(i + 1) for i in range(9) if tablero[i // 3][i % 3] == " "]
@@ -48,8 +56,11 @@ def QuienEmpieza():
     
     if dado1 > dado2:
         EmpiezaUno()
-    else:
+    elif dado2>dado1:
         EmpiezaDos()
+    else:
+        print("Empate\n")
+        QuienEmpieza()
 
 
 def ArrojarDado1():
@@ -69,6 +80,7 @@ def EmpiezaUno():
         elif eleccion1 == "2":
             # actualiza los lugares y elimina los que esten ocupados de las opciones
             ActualizarLista()
+            MostrarTableroConNumeros()
             print(f"Elecciones disponibles para {nombre_1}: {', '.join(lista_lugares)}\n")
         elif eleccion1 == "3":
             while True:
@@ -108,6 +120,7 @@ def EmpiezaDos():
         elif eleccion2 == "2":
             # actualiza los lugares y elimina los que esten ocupados de las opciones
             ActualizarLista()
+            MostrarTableroConNumeros()
             print(f"Elecciones disponibles para {nombre_2}: {', '.join(lista_lugares)}\n")
         elif eleccion2 == "3":
             while True:
