@@ -8,7 +8,8 @@ RecibirNombre(nombre)
 print(" ")
 print(f"Bienvenido {nombre} al juego de Piedra Papel o Tijera!\n\nObtiene la victoria el primero en llegar a tres victorias")
 print(" ")
-
+""" respuesta=""
+while respuesta!="no": """
 while not ComprobarVictoria(puntos_jugador,puntos_maquina):
     while True:
         try:
@@ -26,5 +27,8 @@ while not ComprobarVictoria(puntos_jugador,puntos_maquina):
     else:
         IgualdadOpciones(2)
 
+    """ respuesta = input("¿Quiere jugar denuevo? si/no\n").lower()
+    if respuesta=="si":
+        victoria=False """
 
 

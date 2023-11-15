@@ -12,11 +12,18 @@ nombre_2 = ""
 c=0
 
 def MostrarTableroConNumeros():
-    # Tablero con números
-    print("Tablero con números:")
+    # Diccionario para mapear las posiciones a sus valores
+    mapping = {1: [0, 0], 2: [0, 1], 3: [0, 2],
+               4: [1, 0], 5: [1, 1], 6: [1, 2],
+               7: [2, 0], 8: [2, 1], 9: [2, 2]}
+
+    # Tablero con números y X/O
+    print("\nTablero con números:\n")
     for i in range(1, 10, 3):
-        print(f"{i} | {i + 1} | {i + 2}")
-    print("")
+        row = [tablero[mapping[num][0]][mapping[num][1]] for num in range(i, i + 3)]
+        print(" | ".join(str(cell) if cell != " " else str(num) for num, cell in zip(range(i, i + 3), row)))
+        if i < 7:
+            print("-" * 10)
 
 
 def ActualizarLista():
@@ -81,7 +88,7 @@ def EmpiezaUno():
             # actualiza los lugares y elimina los que esten ocupados de las opciones
             ActualizarLista()
             MostrarTableroConNumeros()
-            print(f"Elecciones disponibles para {nombre_1}: {', '.join(lista_lugares)}\n")
+            print(f"\nElecciones disponibles para {nombre_1}: {', '.join(lista_lugares)}\n")
         elif eleccion1 == "3":
             while True:
                 try:
@@ -121,7 +128,7 @@ def EmpiezaDos():
             # actualiza los lugares y elimina los que esten ocupados de las opciones
             ActualizarLista()
             MostrarTableroConNumeros()
-            print(f"Elecciones disponibles para {nombre_2}: {', '.join(lista_lugares)}\n")
+            print(f"\nElecciones disponibles para {nombre_2}: {', '.join(lista_lugares)}\n")
         elif eleccion2 == "3":
             while True:
                 try:
