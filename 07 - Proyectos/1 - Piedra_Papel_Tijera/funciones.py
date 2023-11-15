@@ -1,10 +1,12 @@
 from random import randint
 
 opciones = ["Piedra", "Papel", "Tijera"]
+
 puntos_jugador = 0
 puntos_maquina = 0
 c = 0
 victoria=False
+
 def RecibirNombre(nombre):
     global name
     name=nombre
@@ -35,6 +37,7 @@ def ComprobarVictoria(puntos_jugador, puntos_maquina):
             print("CPU ganó, mejor suerte la próxima!")
             print(" ")
             victoria=True
+            
     return victoria
 
 def Comparacion(indice, indice_r):
@@ -61,3 +64,9 @@ def Comparacion(indice, indice_r):
             puntos_jugador += 1
             print(f"Elección de {name}: {opciones[indice]}\n\nElección CPU: {opciones[indice_r]}\n\nPunto para {name}")
             print(" ")
+            
+def ResetVictoria():
+    global victoria,puntos_jugador,puntos_maquina
+    puntos_jugador =0
+    puntos_maquina =0
+    victoria=False
