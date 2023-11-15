@@ -5,6 +5,10 @@ tablero = [[" ", " ", " "],
            [" ", " ", " "],
            [" ", " ", " "]]
 
+def ResetearTablero():
+    for n in tablero[0]:
+        for i in tablero[0]
+
 lista_lugares = [str(i + 1) for i in range(9)]
 
 nombre_1 = ""
@@ -105,7 +109,10 @@ def EmpiezaUno():
                             resultado = ComprobarGanador()
                             if resultado:
                                 print(resultado)
-                                sys.exit()
+                                respuesta=input("¿Quieren volver a jugar?")
+                                if respuesta!="no":
+                                    ResetearTablero()
+                                    QuienEmpieza()
                         break
                     else:
                         print("Casilla ocupada. Intente de nuevo.\n")
@@ -146,7 +153,10 @@ def EmpiezaDos():
                             resultado = ComprobarGanador()
                             if resultado:
                                 print(resultado)
-                                sys.exit()
+                                respuesta=input("¿Quieren volver a jugar?")
+                                if respuesta!="no":
+                                    ResetearTablero()
+                                    QuienEmpieza()
                         break
                     else:
                         print("Casilla ocupada. Intente de nuevo.\n")
@@ -196,4 +206,5 @@ def ComprobarGanador():
         return '\nEmpate!\n'
     
     return None
+
 
