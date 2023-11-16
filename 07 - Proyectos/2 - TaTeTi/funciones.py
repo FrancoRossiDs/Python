@@ -1,13 +1,13 @@
 from random import randint
-import sys
 
 tablero = [[" ", " ", " "],
            [" ", " ", " "],
            [" ", " ", " "]]
 
 def ResetearTablero():
-    for n in tablero[0]:
-        for i in tablero[0]
+    for n in range(len(tablero)):
+        for i in range(len(tablero[0])):
+            tablero[i][n]= " "
 
 lista_lugares = [str(i + 1) for i in range(9)]
 
