@@ -1,27 +1,27 @@
 from random import randint
-
+#Tablero vacío
 tablero = [[" ", " ", " "],
            [" ", " ", " "],
            [" ", " ", " "]]
-
+#Función para resetear tablero
 def ResetearTablero():
     for n in range(len(tablero)):
         for i in range(len(tablero[0])):
             tablero[i][n]= " "
-
+#Lista con los lugares disponibles
 lista_lugares = [str(i + 1) for i in range(9)]
 
 nombre_1 = ""
 nombre_2 = ""
 c=0
-
+#Mapeo para mostrar las opciones disponibles
 def MostrarTableroConNumeros():
     # Diccionario para mapear las posiciones a sus valores
     mapping = {1: [0, 0], 2: [0, 1], 3: [0, 2],
                4: [1, 0], 5: [1, 1], 6: [1, 2],
                7: [2, 0], 8: [2, 1], 9: [2, 2]}
 
-    # Tablero con números y X/O
+# Tablero con números y X/O
     print("\nTablero con números:\n")
     for i in range(1, 10, 3):
         row = [tablero[mapping[num][0]][mapping[num][1]] for num in range(i, i + 3)]
@@ -29,26 +29,25 @@ def MostrarTableroConNumeros():
         if i < 7:
             print("-" * 10)
 
-
+#Funcion que actualiza el tablero cuando se hace in movimiento
 def ActualizarLista():
     global lista_lugares
     lista_lugares = [str(i + 1) for i in range(9) if tablero[i // 3][i % 3] == " "]
 
-# En funciones.py
-
+#Recibe los nombres de los jugadores
 def RecibirNombres():
     global nombre_1, nombre_2
     print(" ")
     nombre_1=input("Ingrese el nombre del primer jugador\n")
     nombre_2=input("Ingrese el nombre del segundo jugador\n")
 
-
+#Función para mostrar el estado actual del tablero
 def MostrarTablero():
     for i in range(len(tablero)):
         print(tablero[i])
     return ''
 
-
+#Función que decide quien empieza
 def QuienEmpieza():
     dado_r = ""
     dado_r2 = ""
@@ -64,7 +63,7 @@ def QuienEmpieza():
 
     dado2 = ArrojarDado2()
     print(f"Resultado {dado2}\n")
-    
+    #Asigna ganador y empiezan
     if dado1 > dado2:
         EmpiezaUno()
     elif dado2>dado1:
@@ -73,10 +72,10 @@ def QuienEmpieza():
         print("Empate\n")
         QuienEmpieza()
 
-
+#Dado del jugador 1
 def ArrojarDado1():
     return randint(1, 6)
-
+#Dado del jugador 2
 def ArrojarDado2():
     return randint(1, 6)
 
@@ -87,6 +86,7 @@ def EmpiezaUno():
     while eleccion1 != "3":
         eleccion1 = input(f"\n{nombre_1} haga su movimiento\n1: Ver estado del tablero\n2: Ver lista de opciones\n3: Hacer movimientos\n")
         if eleccion1 == "1":
+            #Muestra el tablero actual
             MostrarTablero()
         elif eleccion1 == "2":
             # actualiza los lugares y elimina los que esten ocupados de las opciones
@@ -94,6 +94,7 @@ def EmpiezaUno():
             MostrarTableroConNumeros()
             print(f"\nElecciones disponibles para {nombre_1}: {', '.join(lista_lugares)}\n")
         elif eleccion1 == "3":
+            #elije lugar que quiere ocupar
             while True:
                 try:
                     eleccion_lugar = int(input(f"Elija una opción: \n"))
@@ -170,7 +171,7 @@ def EmpiezaDos():
 
 
 
-
+#Comprueba filas, columnas, diagonales para comprobar si hay un ganador
 def ComprobarGanador():
     for fila in tablero:
         if fila.count('X') == 3:
