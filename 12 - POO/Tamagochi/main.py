@@ -1,6 +1,9 @@
 from clases import *
+#Se ingrese el nombre de la mascota
+nombre=input("Ingrese el nombre de su mascota virtual \n")
+
 #Se inicia la clase con su nombre
-mascota = Tamagochi("Mochi")
+mascota = Tamagochi(nombre)
 
 #Bucle while que se repetirá mientras la mascota esté viva(esta_vivo = True) o se eliga la opción de salir (5)
 while mascota.esta_vivo:
@@ -13,7 +16,7 @@ while mascota.esta_vivo:
     print("5. Salir")
 
     opcion = input("Selecciona una opción (1-5): \n")
-
+    #If con las opciones
     if opcion == "1":
         mascota.mostrar_estado()
     elif opcion == "2":
