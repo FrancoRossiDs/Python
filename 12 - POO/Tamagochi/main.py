@@ -1,8 +1,10 @@
 from clases import *
-
+#Se inicia la clase con su nombre
 mascota = Tamagochi("Mochi")
 
+#Bucle while que se repetirá mientras la mascota esté viva(esta_vivo = True) o se eliga la opción de salir (5)
 while mascota.esta_vivo:
+    #Opciones para interactuar con la Mascota
     print("\n¿Qué quieres hacer?")
     print("1. Ver estado")
     print("2. Alimentar")
