@@ -81,14 +81,14 @@ class Tamagochi:
         self.nivel_felicidad = max(0, min(100, self.nivel_felicidad))
         
     #Funcion para bajar el hambre/energía periodicamente
-    def pasoDelTiempo(self):
+    def pasoDelTiempo(self,bandera):
         while not bandera.is_set(): 
             self.nivel_hambre -= 1
             self.nivel_energia -= 1
             time.sleep(self.tiempo_de_espera)
 
-    def iniciarTamagotchi(self):
-        hilo_tamagotchi = threading.Thread(target=self.pasoDelTiempo)
+    def iniciarTamagotchi(self,bandera):
+        hilo_tamagotchi = threading.Thread(target=self.pasoDelTiempo(bandera))
         hilo_tamagotchi.daemon = True 
         hilo_tamagotchi.start()
         return hilo_tamagotchi
