@@ -1,12 +1,17 @@
+import threading
+import time
+from clases import *
+
 class Tamagochi:
     #Valores iniciales de la mascota
-    def __init__(self, nombre):
+    def __init__(self, nombre, tiempo_de_espera=3):
         self.nombre = nombre
         self.nivel_energia = 100
         self.nivel_hambre = 0
         self.nivel_felicidad = 50
         self.humor = "indiferente"
         self.esta_vivo = True
+        self.tiempo_de_espera = tiempo_de_espera
 
     #Función para mostrar el estado actual de la mascota
     def mostrar_estado(self):
@@ -74,3 +79,16 @@ class Tamagochi:
         self.nivel_energia = max(0, min(100, self.nivel_energia))
         self.nivel_hambre = max(0, min(100, self.nivel_hambre))
         self.nivel_felicidad = max(0, min(100, self.nivel_felicidad))
+        
+    #Funcion para bajar el hambre/energía periodicamente
+    def pasoDelTiempo(self):
+        while not bandera.is_set(): 
+            self.nivel_hambre -= 1
+            self.nivel_energia -= 1
+            time.sleep(self.tiempo_de_espera)
+
+    def iniciarTamagotchi(self):
+        hilo_tamagotchi = threading.Thread(target=self.pasoDelTiempo)
+        hilo_tamagotchi.daemon = True 
+        hilo_tamagotchi.start()
+        return hilo_tamagotchi

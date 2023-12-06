@@ -4,6 +4,9 @@ nombre=input("Ingrese el nombre de su mascota virtual \n")
 
 #Se inicia la clase con su nombre
 mascota = Tamagochi(nombre)
+hilo=mascota.iniciarTamagotchi()
+bandera=threading.Event()
+
 
 #Bucle while que se repetirá mientras la mascota esté viva(esta_vivo = True) o se eliga la opción de salir (5)
 while mascota.esta_vivo:
@@ -26,6 +29,8 @@ while mascota.esta_vivo:
     elif opcion == "4":
         mascota.dormir()
     elif opcion == "5":
+        bandera.set()
+        hilo.join()
         break
     else:
         print("Opción inválida. Inténtalo de nuevo.")
